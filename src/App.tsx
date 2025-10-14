@@ -5,6 +5,7 @@ import './App.css'
 import EsempioStile from './EsempioStile'
 import ComponenteUno from './ComponenteUno'
 import ComponenteDue from './ComponenteDue'
+import ComponenteTre from './ComponenteTre'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +28,7 @@ function App() {
       </div>
       <ComponenteUno />
       <ComponenteDue />
+      <ComponenteTre />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={
