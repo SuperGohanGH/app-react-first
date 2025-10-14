@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 const ComponenteUno = () => {
     const [isHovered, setIsHovered] = useState(false);
 
