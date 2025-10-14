@@ -3,8 +3,7 @@ const ComponenteUno = () => {
         border: '2px solid red', 
         padding: '10px', 
         margin: '10px', 
-        borderRadius: '8px', 
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)', 
+        borderRadius: '8px',
         maxWidth: '300px' 
     };
 
