@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import EsempioStile from './EsempioStile'
 import ComponenteUno from './ComponenteUno'
+import ComponenteDue from './ComponenteDue'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,9 +24,9 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        <ComponenteUno />
       </div>
-
+      <ComponenteUno />
+      <ComponenteDue />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={
