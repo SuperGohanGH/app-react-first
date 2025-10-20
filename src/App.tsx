@@ -1,53 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import EsempioStile from './EsempioStile'
-import ComponenteUno from './ComponenteUno'
-import ComponenteDue from './ComponenteDue'
-import ComponenteTre from './ComponenteTre'
+import "./App.css";
+import Ingredients from "./components/Ingredients.tsx";
+import { useState } from "react";
 
 function App() {
+  const [filter, setFilter] = useState("");
+  const [ingredientsFiltered, setIngredientsFiltered] = useState(Ingredients);
 
-  // const [count, setCount] = useState(0)
-  // const nome = "Gohan"
-  // const a = 10
-
-  const [count, setCount] = useState(0);
+  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFilter(value);
+    const filtered = Ingredients.filter((ingredient) =>
+      ingredient.name.toLowerCase().startsWith(value.toLowerCase())
+    );
+    setIngredientsFiltered(filtered);
+  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value);
+  };
+  const applyFilter = () => {
+    const text = filter.trim().toLowerCase();
+    if (!text) {
+      setIngredientsFiltered(Ingredients);
+      return;
+    }
+    setIngredientsFiltered(
+      Ingredients.filter((ingredient) =>
+        ingredient.name.toLowerCase().startsWith(text)
+      )
+    );
+  };
   return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>Incrementa</button>
-      <EsempioStile />
-      {/* <h1>la suma de {a} + {b} es {a + b}</h1>
-      <h1>que pasa pe papi me llamo {nome} y tengo {x\count} años</h1> */}
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <ComponenteUno />
-      <ComponenteDue />
-      <ComponenteTre />
-      <h1>Vite + React</h1>
-      <div className="card">
-        {/* <button onClick={
-          () => setCount((count) => count + 1)
-        }>
-          count is {count}
-        </button> */}
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <h1>Ingredient List</h1>
+      <ul>
+        {ingredientsFiltered.map((ingredient) => (
+          <li key={ingredient.id}>
+            {ingredient.name} - {ingredient.quantity} {ingredient.unit}
+          </li>
+        ))}
+      </ul>
+      <input
+        type="text"
+        name="filter"
+        value={filter}
+        onChange={handleInputChange}
+        placeholder="Inserisci testo e clicca Filtra"
+      />
+      <button onClick={applyFilter}>Filtra</button>
+      <p>Seconda variante: </p>
+      <input type="text" name="filter" onChange={handleFilterChange} />
+    </div>
+  );
 }
 
-export default App
+export default App;
