@@ -2,16 +2,10 @@ import { useState } from 'react';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import TodoFilter from './TodoFilter';
-import { type FilterType } from '../types';
-
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import type {FilterType, ITodo} from '../types';
 
 function TodoApp() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>([]);
   const [filter, setFilter] = useState<FilterType>('all');
 
   const addTodo = (text: string) => {

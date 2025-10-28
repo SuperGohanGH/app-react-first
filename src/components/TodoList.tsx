@@ -1,11 +1,8 @@
 import TodoItem from './TodoItem';
+import type { ITodo } from '../types';
 
 interface TodoListProps {
-  todos: {
-    id: number;
-    text: string;
-    completed: boolean;
-  }[];
+  todos: ITodo[];
   onToggleTodo: (id: number) => void;
 }
 
